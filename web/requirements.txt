@@ -5,6 +5,7 @@ dash-html-components
 pandas 
 numpy
 
+requests
 dash-bootstrap-components  
 dash-core-components  
 dash-html-components          

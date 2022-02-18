@@ -23,7 +23,7 @@ services:
     volumes:
       - ./api:/code/api
     ports:
-      - "8000:8000"
+      - "8000:8000"    # maquina:container
     restart: on-failure
 
   web:

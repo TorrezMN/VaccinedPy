@@ -1,26 +1,36 @@
-from dash import Dash, html, dcc
-import plotly.express as px
-import pandas as pd
+import requests
 
-app = Dash(__name__)
+import dash
+from dash import dcc, html
+from dash.dependencies import Input, Output
 
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
-df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
-
-fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
+app = dash.Dash()
 
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
-    html.Div(children='''
-        Dash: A small web application framework for your data.
-    '''),
-    dcc.Graph(id='example-graph', figure=fig)
+    dcc.Input(id='input', value='enter something', type='text'),
+    html.Div(id='output1', ),
+    html.Button('Make api call', id='button', n_clicks=0),
+    html.Div(id='output2', ),
 ])
 
+
+#  CALLBACKS
+@app.callback(Output(component_id='output2', component_property='children'),
+              [Input("button", "n_clicks")])
+def update_data(nclicks):
+    if nclicks in [0, None]:
+        return ('NO CLICO TODAVIA!')
+    else:
+        data = requests.get('http://vaccined_api:8000')
+        return (data.text)
+
+
+@app.callback(Output(component_id='output1', component_property='children'),
+              [Input(component_id='input', component_property='value')])
+def update_value(input_data):
+    return ("Input: {0}".format(input_data))
+
+
 if __name__ == '__main__':
+
     app.run_server(host='0.0.0.0', port=8080, debug=True)
