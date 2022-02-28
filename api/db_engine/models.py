@@ -3,18 +3,28 @@
 # Author : Torrez, MN
 
 from db_engine.database import Base
-from sqlalchemy import Column, String, Boolean, Integer
+from sqlalchemy import Boolean, Column, Integer, String
+
+#  MODELS
+#  ==========================
+#  'establecimiento',
+#  'dosis',
+#  'descripcion_vacuna',
 
 
-class DeviceInfo(Base):
-    __tablename__ = 'DeviceInfo'
-    token = Column(String, primary_key=True)
-    username = Column(String, default='user')
-
-
-class Configuration(Base):
-    __tablename__ = 'Configuration'
+class Establishments(Base):
+    __tablename__ = 'Establishments'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    modelUrl = Column(String)
-    frequency = Column(Integer)
-    federated = Column(Boolean)
+    establishments_name = Column(String, unique=True)
+
+
+class Dose(Base):
+    __tablename__ = 'Dose'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    dose_number = Column(String, unique=True)
+
+
+class Vaccine(Base):
+    __tablename__ = 'Vaccine'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    vaccine_name = Column(String, unique=True)

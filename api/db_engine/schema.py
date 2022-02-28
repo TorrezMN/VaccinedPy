@@ -8,18 +8,18 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class DeviceInfo(BaseModel):
-    token: str
-    username: Optional[str]
-
+class Establishments(BaseModel):
+    establishments_name : str
     class Config:
         orm_mode = True
 
 
-class Configuration(BaseModel):
-    modelUrl: str
-    frequency: int
-    federated: bool
+class Dose(BaseModel):
+    dose_number : str 
+    class Config:
+        orm_mode = True
 
+class Vaccine(BaseModel):
+    vaccine_name: str 
     class Config:
         orm_mode = True
