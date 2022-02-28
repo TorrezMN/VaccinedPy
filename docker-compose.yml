@@ -3,23 +3,33 @@ version: "3.9"
 services:
   db:
     container_name: vaccined_db
-    image: postgres
+    image: postgres:12.0-alpine
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=nudges
+    ports:
+      - '5432:5432'
+
 
   api:
     build:
       context: ./api
       dockerfile: Dockerfile
     container_name: vaccined_api
+    env_file:
+      - api/.api_env
     working_dir: /code/api
     command: bash -c "cron && uvicorn main_api:app --host 0.0.0.0 --port 8000 --reload"
     environment:
-      DEBUG: 1
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=nudges
+    depends_on:
+      - db
+
     volumes:
       - ./api:/code/api
     ports:
@@ -42,3 +52,6 @@ services:
       - ./web:/code/web
     ports:
       - "8080:8080"
+    depends_on:
+      - api
+      - db
