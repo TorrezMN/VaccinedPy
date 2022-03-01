@@ -30,6 +30,14 @@ def get_all_dose(db: Session):
     return db.query(models.Dose).all()
 
 
+def save_new_vaccine(db: Session, vacc: schema.Vaccine):
+    v = models.Vaccine(**vacc.dict())
+    db.add(v)
+    db.commit()
+    db.refresh(v)
+    return (v)
+
+
 def save_new_record(db: Session, rec: schema.Record):
     rec = models.Person_Record(**rec.dict())
     db.add(rec)

@@ -28,12 +28,13 @@ class Vaccine(BaseModel):
 
 class Record(BaseModel):
     nombre : str 
-    apellido: str 
-    establecimiento:int   
-    fecha_aplicacion : date    
-    cedula :  str 
-    dosis: str 
-    descripcion_vacuna:str 
+    apellido : str 
+    fecha_aplicacion : date 
+    cedula : str 
+    establishment : int 
+    dose : int 
+    vaccine : int 
     actualizado_al: date 
+
     class Config:
         orm_mode = True

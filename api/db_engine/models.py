@@ -3,7 +3,7 @@
 # Author : Torrez, MN
 
 from db_engine.database import Base
-from sqlalchemy import Boolean, Column, Integer, String, Date
+from sqlalchemy import Boolean, Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
 #  MODELS
@@ -16,19 +16,19 @@ from sqlalchemy.orm import relationship
 class Establishments(Base):
     __tablename__ = 'Establishments'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    establishments_name = Column(String, unique=True, index=True)
+    establishments_name = Column(String(50), unique=True, index=True)
 
 
 class Dose(Base):
     __tablename__ = 'Dose'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    dose_number = Column(String, unique=True, index=True)
+    dose_number = Column(String(50), unique=True, index=True)
 
 
 class Vaccine(Base):
     __tablename__ = 'Vaccine'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    vaccine_name = Column(String, unique=True, index=True)
+    vaccine_name = Column(String(50), unique=True, index=True)
 
 
 #  REGISTRO
@@ -48,10 +48,9 @@ class Person_Record(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String(50), index=True)
     apellido = Column(String(50), index=True)
-    establecimiento = relationship('Establishments',
-                                   foreign_keys='Establishments.id')
     fecha_aplicacion = Column(Date, index=True)
-    cedula = Column(String(9), index=True)
-    dosis = relationship('Dose', foreign_keys='Dose.id')
-    descripcion_vacuna = relationship('Vaccine', foreign_keys='Vaccine.id')
+    cedula = Column(String(15), index=True)
     actualizado_al = Column(Date, index=True)
+    establishment = Column(Integer, ForeignKey('Establishments.id'))
+    dose = Column(Integer, ForeignKey('Dose.id'))
+    vaccine = Column(Integer, ForeignKey('Vaccine.id'))
