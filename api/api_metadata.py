@@ -4,17 +4,35 @@
 
 api_metadata = [
     {
-        "name": " system interface ",
-        "description": """
- User creation and items establish
-"""
-    },
-    {
-        "name": "items",
+        "name": "dose",
         "description": " management items, You can view the document ",
         "externalDocs": {
             "description": " Using document ",
-            "url": "http://localhost:8000/docs#/Itmes",
+            "url": "http://localhost:8000/docs/dose",
+        },
+    },
+    {
+        "name": "establishments",
+        "description": " management items, You can view the document ",
+        "externalDocs": {
+            "description": " Using document ",
+            "url": "http://localhost:8000/docs/establishments",
+        },
+    },
+    {
+        "name": "vaccine",
+        "description": " management items, You can view the document ",
+        "externalDocs": {
+            "description": " Using document ",
+            "url": "http://localhost:8000/docs/vaccine",
+        },
+    },
+    {
+        "name": "records",
+        "description": " management items, You can view the document ",
+        "externalDocs": {
+            "description": " Using document ",
+            "url": "http://localhost:8000/docs/records",
         },
     },
 ]

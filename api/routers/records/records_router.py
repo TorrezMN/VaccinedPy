@@ -3,13 +3,15 @@
 # Author : Torrez, MN
 
 from fastapi import Depends, HTTPException, APIRouter
-from db_engine.schema import Record
 from db_engine.database import SessionLocal, engine
 from db_engine import crud
 
+#  IMPORTING SCHEMAS
+from schemas.record_chemas import Record
+
 record_router = APIRouter(
     prefix="/record",
-    tags=["record"],
+    tags=["records"],
 )
 
 

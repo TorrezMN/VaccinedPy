@@ -3,9 +3,11 @@
 # Author : Torrez, MN
 
 from fastapi import Depends, HTTPException, APIRouter
-from db_engine.schema import Establishments
 from db_engine.database import SessionLocal, engine
 from db_engine import crud
+
+#  IMPORTING SCHEMAS
+from schemas.establishments_schemas import Establishments
 
 establishment_router = APIRouter(
     prefix="/establishments",

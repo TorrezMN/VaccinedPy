@@ -3,9 +3,11 @@
 # Author : Torrez, MN
 
 from fastapi import Depends, HTTPException, APIRouter
-from db_engine.schema import Dose
 from db_engine.database import SessionLocal, engine
 from db_engine import crud
+
+#  IMPORTING SCHEMAS
+from schemas.dose_schemas import Dose
 
 dose_router = APIRouter(
     prefix="/dose",
