@@ -21,11 +21,11 @@ def db():
         db.close()
 
 
-@establishment_router.post('/save_establishment')
-def save_establishment(estbl: Establishments, db=Depends(db)):
-    return crud.save_establishment(db, estbl)
-
-
 @establishment_router.get('/get_all_establishments')
 def get_all_establishments(db=Depends(db)):
     return crud.get_all_establishments(db)
+
+
+@establishment_router.post('/save_establishment')
+def save_establishment(estbl: Establishments, db=Depends(db)):
+    return crud.save_establishment(db, estbl)

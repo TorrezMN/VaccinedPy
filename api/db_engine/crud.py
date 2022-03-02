@@ -46,5 +46,9 @@ def save_new_record(db: Session, rec: schema.Record):
     return (rec)
 
 
+def get_all_records(db: Session):
+    return db.query(models.Person_Record).all()
+
+
 def error_message(message):
     return {'error': message}

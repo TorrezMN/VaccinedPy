@@ -12,10 +12,16 @@ from routers.vaccine import vaccine_router
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+#  IMPORTING METADATA
+from api_metadata import api_metadata
+
+app = FastAPI(title="ESTE TITULO",
+              description="UNA DESCRIPCION MUY LINDA.",
+              version="0.0.1",
+              openapi_tags=api_metadata)
 
 #  INCLUDING ROUTERS
-app.include_router(dose_router.dose_router)
+app.include_router(dose_router.dose_router, tags=['items'])
 app.include_router(establishment_router.establishment_router)
 app.include_router(vaccine_router.vaccine_router)
 app.include_router(records_router.record_router)

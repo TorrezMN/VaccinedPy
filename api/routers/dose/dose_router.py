@@ -21,11 +21,11 @@ def db():
         db.close()
 
 
-@dose_router.post('/save_dose')
-def save_dose(dose: Dose, db=Depends(db)):
-    return crud.save_dose(db, dose)
-
-
 @dose_router.get('/get_all_dose')
 def get_all_dose(db=Depends(db)):
     return crud.get_all_dose(db)
+
+
+@dose_router.post('/save_dose')
+def save_dose(dose: Dose, db=Depends(db)):
+    return crud.save_dose(db, dose)

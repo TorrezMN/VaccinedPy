@@ -21,6 +21,11 @@ def db():
         db.close()
 
 
+@record_router.get('/get_all_records')
+def add_new_record(db=Depends(db)):
+    return crud.get_all_records(db)
+
+
 @record_router.post('/add_new_record')
 def add_new_record(rec: Record, db=Depends(db)):
     return crud.save_new_record(db, rec)
