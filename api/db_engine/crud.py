@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # Author : Torrez, MN
 #  FILTRAR POR CONTENIDO
-#  Model.query.filter(Model.columnName.contains('sub_string'))
 
 from db_engine import models
-from sqlalchemy.orm import Session
-#  IMPORTING SCHEMAS
-from schemas.establishments_schemas import Establishments
 from schemas.dose_schemas import Dose
-from schemas.vaccine_schemas import Vaccine
+#  IMPORTING SCHEMAS
+from schemas.establishments_schemas import Establishments, Establishments_Name
 from schemas.record_chemas import Record
+from schemas.vaccine_schemas import Vaccine
+from sqlalchemy.orm import Session
 
 
 def save_establishment(db: Session, info: Establishments):
@@ -23,6 +22,11 @@ def save_establishment(db: Session, info: Establishments):
 
 def get_all_establishments(db: Session):
     return db.query(models.Establishments).all()
+
+
+def filter_establishment_name(db: Session, estb_name: Establishments_Name):
+    return db.query(models.Establishments).filter(
+        models.Establishments.establishments_name.contains(estb_name)).first()
 
 
 def save_dose(db: Session, info: Dose):
