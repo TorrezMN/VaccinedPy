@@ -1,0 +1,21 @@
+
+@media screen and (min-width: 30em) {
+  *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+  }
+  body{
+    min-width:100%;
+    min-height:100vh;
+    background:orange;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  h1{
+    background:red;
+  }
+}

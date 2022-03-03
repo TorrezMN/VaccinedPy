@@ -1,7 +1,14 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, Request, HTTPException
 from db_engine.database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from db_engine import crud, models
+import os
+from pathlib import Path
+
+#  STATIC/TEMPLATES IMPORTS
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 #  IMPORTING SCHEMAS
 from schemas.dose_schemas import Dose
@@ -13,7 +20,6 @@ from routers.dose import dose_router
 from routers.establishment import establishment_router
 from routers.records import records_router
 from routers.vaccine import vaccine_router
-from routers.docs import docs_router
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -30,7 +36,14 @@ app.include_router(dose_router.dose_router)
 app.include_router(establishment_router.establishment_router)
 app.include_router(vaccine_router.vaccine_router)
 app.include_router(records_router.record_router)
-app.include_router(docs_router.docs_router)
+
+#  STATIC & TEMPLATES
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+app.mount('/static', StaticFiles(directory=STATIC_DIR), name="static")
+#
+templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
 
 def db():
@@ -41,9 +54,11 @@ def db():
         db.close()
 
 
+@app.get('/')
+def api_home(request: Request, db=Depends(db)):
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+    })
+
+
 #
-#  @app.get('/')
-#  def api_home():
-#  return ({
-#  'hell0': 'world',
-#  })

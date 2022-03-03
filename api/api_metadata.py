@@ -8,7 +8,7 @@ api_metadata = [
         "description": " management items, You can view the document ",
         "externalDocs": {
             "description": " Using document ",
-            "url": "http://localhost:8000/docs/dose",
+            "url": "http://localhost:8000/my_docs/dose",
         },
     },
     {
@@ -16,7 +16,7 @@ api_metadata = [
         "description": " management items, You can view the document ",
         "externalDocs": {
             "description": " Using document ",
-            "url": "http://localhost:8000/docs/establishments",
+            "url": "http://localhost:8000/my_docs/establishments",
         },
     },
     {
@@ -24,7 +24,7 @@ api_metadata = [
         "description": " management items, You can view the document ",
         "externalDocs": {
             "description": " Using document ",
-            "url": "http://localhost:8000/docs/vaccine",
+            "url": "http://localhost:8000/my_docs/vaccine",
         },
     },
     {
@@ -32,7 +32,7 @@ api_metadata = [
         "description": " management items, You can view the document ",
         "externalDocs": {
             "description": " Using document ",
-            "url": "http://localhost:8000/docs/records",
+            "url": "http://localhost:8000/my_docs/records",
         },
     },
 ]
