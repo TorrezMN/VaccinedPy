@@ -5,11 +5,11 @@
 import os
 from decouple import config
 
-from data_loader import load_dataset
+from data_loader import update_models_data, update_records
 
 
 def download_data():
-    FILE_PATH = 'api/db_engine/helper_scripts/vacunados.csv'
+    FILE_PATH = 'db_engine/helper_scripts/vacunados.csv'
 
     if (os.path.exists(FILE_PATH)):
         print('EL ARCHIVO EXISTE')
@@ -20,4 +20,5 @@ def download_data():
 
 if __name__ == '__main__':
     download_data()
-    load_dataset()
+    update_models_data()
+    update_records()

@@ -11,3 +11,4 @@ sqlalchemy
 python-decouple
 psycopg2
 Jinja2
+pandas

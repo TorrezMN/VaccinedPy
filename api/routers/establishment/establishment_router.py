@@ -33,6 +33,6 @@ def save_establishment(estbl: Establishments, db=Depends(db)):
     return crud.save_establishment(db, estbl)
 
 
-@establishment_router.post('/get_or_create_vaccine')
+@establishment_router.post('/get_or_create_establishment')
 def get_or_create_new_establishment(estb: Establishments_Name, db=Depends(db)):
     return crud.get_or_create_establishment(db, estb)
