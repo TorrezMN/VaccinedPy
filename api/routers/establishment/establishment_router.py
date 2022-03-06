@@ -4,7 +4,7 @@
 
 from fastapi import Depends, HTTPException, APIRouter
 from db_engine.database import SessionLocal, engine
-from db_engine import crud
+from db_engine import establishments_crud as crud
 
 #  IMPORTING SCHEMAS
 from schemas.establishments_schemas import Establishments, Establishments_Name
@@ -33,6 +33,6 @@ def save_establishment(estbl: Establishments, db=Depends(db)):
     return crud.save_establishment(db, estbl)
 
 
-@establishment_router.post('/filter/{estb_name}')
-def filter_establishment(estb_name: str, db=Depends(db)):
-    return crud.filter_establishment_name(db, estb_name)
+@establishment_router.post('/get_or_create_vaccine')
+def get_or_create_new_establishment(estb: Establishments_Name, db=Depends(db)):
+    return crud.get_or_create_establishment(db, estb)

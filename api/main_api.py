@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, Request, HTTPException
 from db_engine.database import SessionLocal, engine
 from sqlalchemy.orm import Session
-from db_engine import crud, models
+from db_engine import models
 import os
 from pathlib import Path
 
@@ -54,11 +54,37 @@ def db():
         db.close()
 
 
-@app.get('/')
-def api_home(request: Request, db=Depends(db)):
+@app.get('/', include_in_schema=False)
+def api_home(request: Request):
     return templates.TemplateResponse("index.html", {
         "request": request,
     })
 
 
-#
+@app.get('/dose_doc', include_in_schema=False)
+def api_dose_doc(request: Request):
+
+    return templates.TemplateResponse("dose_docs.html", {
+        "request": request,
+    })
+
+
+@app.get('/establishments_doc', include_in_schema=False)
+def api_establishments_doc(request: Request):
+    return templates.TemplateResponse("establishments_doc.html", {
+        "request": request,
+    })
+
+
+@app.get('/vaccine_docs', include_in_schema=False)
+def api_vaccine_docs(request: Request):
+    return templates.TemplateResponse("vaccine_docs.html", {
+        "request": request,
+    })
+
+
+@app.get('/records_docs', include_in_schema=False)
+def api_records_docs(request: Request):
+    return templates.TemplateResponse("records_docs.html", {
+        "request": request,
+    })

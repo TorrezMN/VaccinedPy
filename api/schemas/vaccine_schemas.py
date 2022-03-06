@@ -13,3 +13,8 @@ class Vaccine(BaseModel):
     vaccine_name: str 
     class Config:
         orm_mode = True
+
+class Vaccine_Name(BaseModel):
+    vaccine_name : str
+    class Config:
+        orm_mode = True

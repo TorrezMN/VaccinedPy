@@ -13,7 +13,8 @@ class Establishments(BaseModel):
     establishments_name : str
     class Config:
         orm_mode = True
+
 class Establishments_Name(BaseModel):
-    estb_name : str
+    establishments_name : str
     class Config:
         orm_mode = True

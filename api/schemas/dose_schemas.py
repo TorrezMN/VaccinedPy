@@ -13,3 +13,7 @@ class Dose(BaseModel):
     dose_number : str 
     class Config:
         orm_mode = True
+class Dose_Name(BaseModel):
+    dose_number : str 
+    class Config:
+        orm_mode = True
