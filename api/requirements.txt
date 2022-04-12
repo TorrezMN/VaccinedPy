@@ -10,5 +10,10 @@ aiofiles
 sqlalchemy
 python-decouple
 psycopg2
-Jinja2
+
+Jinja2==3.0.1
+
+
+requests
+luigi
 pandas

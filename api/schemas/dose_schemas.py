@@ -10,10 +10,10 @@ from pydantic import BaseModel
 
 
 class Dose(BaseModel):
-    dose_number : str 
+    dose_number : int 
     class Config:
         orm_mode = True
 class Dose_Name(BaseModel):
-    dose_number : str 
+    dose_number : int 
     class Config:
         orm_mode = True

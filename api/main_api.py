@@ -6,8 +6,8 @@ import os
 from pathlib import Path
 
 #  STATIC/TEMPLATES IMPORTS
-from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 #  IMPORTING SCHEMAS
@@ -41,8 +41,9 @@ app.include_router(records_router.record_router)
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 app.mount('/static', StaticFiles(directory=STATIC_DIR), name="static")
-#
+
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
 

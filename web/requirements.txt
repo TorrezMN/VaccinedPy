@@ -14,7 +14,6 @@ dash-table
 Flask          
 Flask-Compress          
 future    
-Jinja2    
 MarkupSafe          
 plotly    
 python-dateutil          
@@ -23,4 +22,5 @@ retrying
 setuptools     
 six   
 Werkzeug          
+Jinja2==3.0.1
 

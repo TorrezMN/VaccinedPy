@@ -13,7 +13,6 @@ services:
     ports:
       - '5432:5432'
 
-
   api:
     build:
       context: ./api
@@ -29,11 +28,11 @@ services:
       - POSTGRES_DB=nudges
     depends_on:
       - db
-
     volumes:
       - ./api:/code/api
     ports:
-      - "8000:8000"    # maquina:container
+      - "8000:8000"   
+      - "8082:8082"
     restart: on-failure
 
   web:
@@ -55,3 +54,5 @@ services:
     depends_on:
       - api
       - db
+
+

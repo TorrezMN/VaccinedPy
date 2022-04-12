@@ -22,7 +22,7 @@ class Establishments(Base):
 class Dose(Base):
     __tablename__ = 'Dose'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    dose_number = Column(String(50), unique=True, index=True)
+    dose_number = Column(Integer, unique=True, index=True)
 
 
 class Vaccine(Base):
