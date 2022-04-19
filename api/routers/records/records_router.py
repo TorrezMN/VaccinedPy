@@ -24,8 +24,11 @@ def db():
 
 
 @record_router.get('/get_all_records')
-def add_new_record(db=Depends(db)):
+def all_records(db=Depends(db)):
     """
+    USE WITH CAUTION - TAKES A LOT OF TIME
+    ---
+
     Returns a full list of current records in the database.
     """
     return crud.get_all_records(db)
@@ -34,14 +37,11 @@ def add_new_record(db=Depends(db)):
 @record_router.post('/add_new_record')
 def add_new_record(rec: Record, db=Depends(db)):
     """
+    Add New Record
+    ---
+
     Adds a 'complete' new record to the database.
 
-    ...
-
-    Attributes
-    ----------
-    rec : Record
-        A piece of data of type 'Record' that represents the new record to be added.
     """
     return crud.save_new_record(db, rec)
 
@@ -49,14 +49,11 @@ def add_new_record(rec: Record, db=Depends(db)):
 @record_router.get('/filter_by_name/{name}')
 def fileter_by_name(name: str, db=Depends(db)):
     """
-    Filters records by name.
+    Filter by Name
+    ---
 
-    ...
+    Filters records by name. RETURNS THE FIRST OCURRENCE.
 
-    Attributes
-    ----------
-    name : str
-        Name to be used as filter preference.
     """
     data = crud.filter_record_by_name(db, name)
     API_RESPONSE['data'] = data
@@ -66,14 +63,11 @@ def fileter_by_name(name: str, db=Depends(db)):
 @record_router.get('/filter_by_name_all/{name}')
 def fileter_by_name_all(name: str, db=Depends(db)):
     """
+    Filter by Name
+    ---
+
     Filter all records by name and return all records that contain the name.
 
-    ...
-
-    Attributes
-    ----------
-    name : str
-        Name to be used as filter reference.
     """
     data = crud.filter_record_by_name_all(db, name)
     API_RESPONSE['data_size'] = len(data)
@@ -84,14 +78,11 @@ def fileter_by_name_all(name: str, db=Depends(db)):
 @record_router.get('/filter_by_last_name/{last_name}')
 def fileter_by_last_name(last_name: str, db=Depends(db)):
     """
+    Filter by Last Name
+    ---
+
     Filters all records by 'last name' and returns the first ocurrence.
 
-    ...
-
-    Attributes
-    ----------
-    last_name : str
-        Last name to be used as filter parameter.
     """
     data = crud.filter_record_by_last_name(db, last_name)
     API_RESPONSE['data'] = data
@@ -101,14 +92,11 @@ def fileter_by_last_name(last_name: str, db=Depends(db)):
 @record_router.get('/filter_by_last_name_all/{last_name}')
 def fileter_by_last_name_all(last_name: str, db=Depends(db)):
     """
+    Filter by Last Name All
+    ---
+
     Filter all recors by 'last name' and returns a full list of them.
 
-    ...
-
-    Attributes
-    ----------
-    last_name : str
-        Last name to be used as filter paramenter.
     """
     data = crud.filter_record_by_last_name_all(db, last_name)
     API_RESPONSE['size'] = len(data)
@@ -119,14 +107,11 @@ def fileter_by_last_name_all(last_name: str, db=Depends(db)):
 @record_router.get('/filter_by_ci/{ci}')
 def fileter_by_ci(ci: str, db=Depends(db)):
     """
+    Filter by CI
+    ---
+
     Filters records by CI and returns the first ocurrence.
 
-    ...
-
-    Attributes
-    ----------
-    ci : str
-        ci number to be used as filter parameter.
     """
     data = crud.filter_record_by_ci(db, ci)
     if data is None:
@@ -139,14 +124,11 @@ def fileter_by_ci(ci: str, db=Depends(db)):
 @record_router.get('/filter_if_contains_ci/{ci}')
 def fileter_if_contains_ci(ci: str, db=Depends(db)):
     """
+    Filter if Contains the N° given.
+    ---
+
     Filters records by ci if record contains the numbers given and returns a list of records.
 
-    ...
-
-    Attributes
-    ----------
-    ci : str
-        ci number to be used as filter parameter.
     """
 
     data = crud.filter_record_if_contains_ci(db, ci)
@@ -171,14 +153,11 @@ def fileter_if_contains_ci(ci: str, db=Depends(db)):
 @record_router.get('/filter_by_application_date_all/{date}')
 def filter_by_application_date_all(date: str, db=Depends(db)):
     """
+    Filter by Application Date
+    ---
+
     Filters all records in wich 'fecha_aplicacion' matchs the requested date.
 
-    ...
-
-    Attributes
-    ----------
-    date : str
-        Date to be used as filter for the query.
     """
     data = crud.filter_record_by_application_date(db, date)
     API_RESPONSE['size'] = len(data)
@@ -191,14 +170,11 @@ def filter_by_application_date_restricted_size(date: str,
                                                cant: int,
                                                db=Depends(db)):
     """
+    Filter by Application Date and Cant
+    ---
+
     Filters all records in wich 'fecha_aplicacion' matchs the requested date and returns the first N mathes.
 
-    ...
-
-    Attributes
-    ----------
-    date : str
-        Date to be used as filter for the query.
     """
     data = crud.filter_record_by_application_date_restricted(db, date, cant)
     API_RESPONSE['requested_size'] = len(data)

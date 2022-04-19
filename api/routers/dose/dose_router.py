@@ -26,17 +26,39 @@ def db():
 
 @dose_router.get('/get_all_dose')
 def get_all_dose(db=Depends(db)):
+    """
+    Get All Dose
+    ---
+
+    Returns a list of ``all`` dose registered in the sistem.
+
+    """
+
     API_RESPONSE['data'] = crud.get_all_dose(db)
     return (API_RESPONSE)
 
 
 @dose_router.post('/save_dose')
 def save_dose(dose: Dose, db=Depends(db)):
+    """
+    Save Dose
+    ---
+
+    Allows user to save a new dose in the db.
+
+    """
     API_RESPONSE['data'] = crud.save_dose(db, dose)
     return (API_RESPONSE)
 
 
 @dose_router.post('/get_or_create_dose')
 def get_or_create_new_dose(d: Dose_Name, db=Depends(db)):
+    """
+    Get or Create - Dose
+    ---
+
+    Allows users to ``get or create`` a new dose in the db.
+
+    """
     API_RESPONSE['data'] = crud.get_or_create_new_dose(db, d)
     return (API_RESPONSE)
