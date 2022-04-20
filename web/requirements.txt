@@ -1,26 +1,10 @@
 psycopg2
-dash
-dash-html-components
-
 pandas 
 numpy
 
 requests
-dash-bootstrap-components  
-dash-core-components  
-dash-html-components          
-dash-renderer          
-dash-table  
-Flask          
-Flask-Compress          
-future    
-MarkupSafe          
-plotly    
-python-dateutil          
-pytz          
-retrying  
-setuptools     
-six   
-Werkzeug          
-Jinja2==3.0.1
 
+
+panel
+hvplot
+jupyterlab

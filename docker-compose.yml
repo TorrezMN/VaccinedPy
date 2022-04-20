@@ -39,18 +39,18 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    container_name: vaccined_web
-    working_dir: /code/web
+    container_name: panel_web
+    working_dir: /code/src
     restart: on-failure
     
-    command: bash -c "python3 main_web.py"
+    command: bash -c "python3 -m panel serve Interactive_dashboard.ipynb"
 
     environment:
       DEBUG: 1
     volumes:
-      - ./web:/code/web
+      - ./web:/code
     ports:
-      - "8080:8080"
+      - "5006:5006"
     depends_on:
       - api
       - db
