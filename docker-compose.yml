@@ -39,18 +39,39 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    container_name: panel_web
+    container_name: vacunados_web
     working_dir: /code/src
     restart: on-failure
     
-    command: bash -c "python3 -m panel serve Interactive_dashboard.ipynb"
+    command: bash -c "python3 main.py"
 
     environment:
       DEBUG: 1
     volumes:
       - ./web:/code
     ports:
-      - "5006:5006"
+      - 5000:5000
+    depends_on:
+      - api
+      - db
+
+
+  etl:
+    build:
+      context: ./etl
+      dockerfile: Dockerfile
+    container_name: vacunados_etl
+    working_dir: /code/src
+    restart: on-failure
+    
+    command: bash -c "dagit -h 0.0.0.0 -f hell_world.py"
+
+    environment:
+      DEBUG: 1
+    volumes:
+      - ./etl:/code
+    ports:
+      - 3000:3000
     depends_on:
       - api
       - db
