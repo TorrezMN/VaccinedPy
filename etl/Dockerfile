@@ -9,7 +9,7 @@ WORKDIR /code
 
 COPY requirements.txt ./
 
-RUN pip install --upgrade pip && apt-get update && apt-get -y install cron && apt-get -y install htop
+RUN pip install --upgrade pip && apt-get -y install wget && apt-get update && apt-get -y install cron && apt-get -y install htop
 
 
 

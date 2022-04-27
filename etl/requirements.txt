@@ -2,4 +2,5 @@
 dagster
 pandas
 requests
+dagster-shell
 dagit
