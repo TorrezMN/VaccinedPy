@@ -64,7 +64,7 @@ services:
     working_dir: /code/src
     restart: on-failure
     
-    command: bash -c "dagit -h 0.0.0.0 -f hell_world.py"
+    command: bash -c "dagit -h 0.0.0.0 -f data_loader.py"
 
     environment:
       DEBUG: 1
