@@ -14,7 +14,8 @@ from db_engine.database import SessionLocal
 #  IMPORT CRUD OPERATIONS
 from db_engine.dose_crud import get_all_dose, get_or_create_new_dose
 from db_engine.establishments_crud import get_or_create_establishment
-from db_engine.records_crud import filter_record_by_ci, save_new_record
+from db_engine.records_crud import (filter_record_by_ci, save_new_record,
+                                    update_record)
 from db_engine.vaccine_crud import get_or_create_vaccine
 #  SCHEMAS
 from schemas.dose_schemas import Dose_Name
@@ -47,33 +48,54 @@ def incert_update_record(chunk):
 
     for index, row in chunk.iterrows():
         record = filter_record_by_ci(db, row['cedula'])
-        establecimiento = get_or_create_establishment(
+        
+        
+        if (record):
+            r = Record(
+                nombre=row['nombre'],
+                apellido=row['apellido'],
+                fecha_aplicacion= datetime.strptime(str(row['fecha_aplicacion']), format_string),
+                cedula = row['cedula'],
+                establishment=get_or_create_establishment(
             db,
         Establishments_Name(establishments_name= row['establecimiento']),
-        )
-        dosis = get_or_create_new_dose(
+        ).id,
+                dose=get_or_create_new_dose(
             db,
             Dose_Name(dose_number = int(row['dosis']))
-        )
-        descripcion_vacuna = get_or_create_vaccine(
+        ).id,
+                vaccine=get_or_create_vaccine(
             db,
             Vaccine_Name(vaccine_name= row['descripcion_vacuna'])
-        )
-        if (record):
-            print('EXISTE EL RECORD!')
+        ).id,
+                actualizado_al=datetime.strptime(str(row['actualizado_al']), format_string)
+            )
+            update_record(db, row['cedula'], r)
+
+            main_logger.warn('A RECORD WAS UPDATED!')
+
         else:
             r = Record(
                 nombre=row['nombre'],
-                apellido=row['apellido'], 
+                apellido=row['apellido'],
                 fecha_aplicacion= datetime.strptime(str(row['fecha_aplicacion']), format_string),
                 cedula = row['cedula'],
-                establishment=establecimiento.id,
-                dose=dosis.id,
-                vaccine=descripcion_vacuna.id,
+                establishment=get_or_create_establishment(
+            db,
+        Establishments_Name(establishments_name= row['establecimiento']),
+        ).id,
+                dose=get_or_create_new_dose(
+            db,
+            Dose_Name(dose_number = int(row['dosis']))
+        ).id,
+                vaccine=get_or_create_vaccine(
+            db,
+            Vaccine_Name(vaccine_name= row['descripcion_vacuna'])
+        ).id,
                 actualizado_al=datetime.strptime(str(row['actualizado_al']), format_string)
             )
             save_new_record(db, r)
-            main_logger.info('A new record was saved.')
+            main_logger.info('A NEW RECORD WAS SAVED!')
 
 
     #  print('FECHA APLICACION -> ', row['fecha_aplicacion'])
