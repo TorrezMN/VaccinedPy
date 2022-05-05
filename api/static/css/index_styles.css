@@ -9,13 +9,22 @@
   body{
     min-width:100%;
     min-height:100vh;
-    background:orange;
+    background-image:url('https://cdn.pixabay.com/photo/2020/03/08/23/23/coronavirus-4914026_960_720.jpg');
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
   }
   h1{
-    background:red;
+    background:transparent;
+  }
+  .menu{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
   }
 }
