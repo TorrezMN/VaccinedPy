@@ -9,6 +9,7 @@ from time import sleep
 import pandas as pd
 #  DAGSTER
 from dagster import file_relative_path, get_dagster_logger, job, op
+
 from dagster_shell import create_shell_command_op, create_shell_script_op
 from db_engine.database import SessionLocal
 #  IMPORT CRUD OPERATIONS
@@ -39,17 +40,12 @@ def incert_update_record(chunk):
     #  'descripcion_vacuna',
     #  'actualizado_al'
     #  -----
-    #  date_string = "01-31-2020 14:45:37"
     format_string = "%Y-%m-%d %H:%M:%S"
-    #  datetime.strptime(date_string, format_string)
-    #  datetime.datetime(2020, 1, 31, 14, 45, 37)
 
     db = SessionLocal()
 
     for index, row in chunk.iterrows():
         record = filter_record_by_ci(db, row['cedula'])
-        
-        
         if (record):
             r = Record(
                 nombre=row['nombre'],
@@ -116,7 +112,7 @@ def read_csv_file():
 @job
 def download_csv_dataset():
     a = create_shell_script_op(file_relative_path(
-        __file__, "shell_scripts/hello_shell.sh"),
+        __file__, "shell_scripts/download_csv_file.sh"),
                                name="a")
     file_exists = exists(
         os.path.join(BASE_DIR, 'src', 'csv_data', 'covid_py.csv'))
