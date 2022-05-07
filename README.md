@@ -50,11 +50,11 @@ You must enter the Dagster task manager and fire the initial data load task. For
 http://0.0.0.0:3000
 ```
 In the upper left corner you will see a tab that says ***"launchpad"***. Click there.
-![dagster_home](http://url/to/img.png)
+![dagster_home](https://github.com/TorrezMN/VaccinedPy/blob/main/docs/foto1.png)
 
 
 The task graph view appears. At the bottom right you will see a button that says ***"Launch run"***. click there and you will see the ETL process running.
-![dagster_home](http://url/to/img.png)
+![dagster_home](https://github.com/TorrezMN/VaccinedPy/blob/main/docs/foto2.png)
 
 After this step, you have 3 options.
 
