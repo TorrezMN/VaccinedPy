@@ -8,8 +8,8 @@ from time import sleep
 
 import pandas as pd
 #  DAGSTER
-from dagster import file_relative_path, get_dagster_logger, job, op
-
+from dagster import (RunRequest, ScheduleDefinition, file_relative_path,
+                     get_dagster_logger, graph, job, op, repository, sensor)
 from dagster_shell import create_shell_command_op, create_shell_script_op
 from db_engine.database import SessionLocal
 #  IMPORT CRUD OPERATIONS
@@ -29,21 +29,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 main_logger = get_dagster_logger()
 
+
+
+
+
+@job
+def remove_csv_file():
+    a = create_shell_command_op('echo "hello, world!"', name="a")
+    a()
+
+
 @op
 def incert_update_record(chunk):
-    #  'nombre',
-    #  'apellido',
-    #  'establecimiento',
-    #  'fecha_aplicacion',
-    #  'cedula',
-    #  'dosis',
-    #  'descripcion_vacuna',
-    #  'actualizado_al'
-    #  -----
     format_string = "%Y-%m-%d %H:%M:%S"
-
     db = SessionLocal()
-
     for index, row in chunk.iterrows():
         record = filter_record_by_ci(db, row['cedula'])
         if (record):
@@ -92,21 +91,23 @@ def incert_update_record(chunk):
             )
             save_new_record(db, r)
             main_logger.info('A NEW RECORD WAS SAVED!')
-
-
-    #  print('FECHA APLICACION -> ', row['fecha_aplicacion'])
-    #  print('ACTUALIZADO AL -> ', row['actualizado_al'])
     db.close()
-
 
 @op
 def read_csv_file():
     csv_file_dir = 'csv_data/covid_py.csv'
     df = pd.read_csv(csv_file_dir, delimiter=';', chunksize=500)
+    c = 0
     for k, chunk in enumerate(df):
-        #  LOAD RECORD
-        main_logger.info(f'LOADING CHUNK - {k}!')
-        incert_update_record(chunk)
+        if(c<1):
+            #  LOAD RECORD
+            main_logger.info(f'LOADING CHUNK - {k}!')
+            incert_update_record(chunk)
+            c+=1
+        else:
+            break
+        
+
 
 
 @job
@@ -114,6 +115,8 @@ def download_csv_dataset():
     a = create_shell_script_op(file_relative_path(
         __file__, "shell_scripts/download_csv_file.sh"),
                                name="a")
+
+
     file_exists = exists(
         os.path.join(BASE_DIR, 'src', 'csv_data', 'covid_py.csv'))
 
@@ -122,4 +125,17 @@ def download_csv_dataset():
     else:
         a()
 
+    # After downloading csv data. Process data.
     read_csv_file()
+
+
+
+
+
+
+@repository
+def my_repository():
+    return [
+        download_csv_dataset,
+        remove_csv_file,
+    ]
