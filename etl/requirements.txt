@@ -1,11 +1,4 @@
-
-dagster
-pandas
-requests
-dagster-shell
-dagit
-pydantic>=1.8.0,<2.0.0
-sqlalchemy
-
-psycopg2
-python-decouple
+dagit==0.14.3
+dagster-postgres==0.14.3
+dagster==0.14.3
+ipython-genutils==0.2.0

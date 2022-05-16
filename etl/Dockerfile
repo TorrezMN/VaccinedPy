@@ -1,22 +1,15 @@
+FROM python:3.10-slim
 
-# DOCKERFILE API
+# Change working directory
+WORKDIR /usr/src/app
+ENV DAGSTER_HOME=/usr/src/app
 
-
-FROM python:3.9
-
-
-WORKDIR /code
-
-COPY requirements.txt ./
-
-RUN pip install --upgrade pip && apt-get -y install wget && apt-get update && apt-get -y install cron && apt-get -y install htop
-
-
-
+# Install dependencies
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+# Copy source code
+COPY ./dagster.yaml .
+COPY  ./src .
 
-
-COPY . /code/
-
-
+CMD ["dagit", "-w", "workspace.yaml", "-h", "0.0.0.0", "-p", "3000"]
