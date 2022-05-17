@@ -55,11 +55,15 @@ services:
 
   dagster-dagit:
     build: ./etl
+    volumes:
+      - ./etl/src:/usr/src/app
     ports:
       - 3000:3000
 
   dagster-daemon:
     build: ./etl
+    volumes:
+      - ./etl/src:/usr/src/app
     command: "dagster-daemon run"
 
   dagster-postgres:
