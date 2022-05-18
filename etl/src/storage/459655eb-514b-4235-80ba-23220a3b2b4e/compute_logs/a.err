@@ -1,0 +1,40 @@
+2022-05-18 23:08:21 +0000 - dagster - DEBUG - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - 550 - a - LOGS_CAPTURED - Started capturing logs for step: a.
+2022-05-18 23:08:22 +0000 - dagster - DEBUG - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - 550 - a - STEP_START - Started execution of step "a".
+2022-05-18 23:08:22 +0000 - dagster - INFO - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - a - Running command:
+
+
+
+
+echo "========================================================================="
+echo $PWD
+ls
+echo "========================================================================="
+echo "CSV DATA DOWNLOADING STARTED NOW!"
+echo "========================================================================="
+wget --no-check-certificate -O src/etl/src/jobs/csv_data/covid_py.csv "https://www.mspbs.gov.py/xweb/vacunados.csv"
+echo "========================================================================="
+
+2022-05-18 23:08:23 +0000 - dagster - INFO - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - a - Command pid: 611
+2022-05-18 23:08:24 +0000 - dagster - INFO - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - a - =========================================================================
+/usr/src/app
+-x
+history
+jobs
+main.py
+ops
+repositories
+schedules
+storage
+tests
+workspace.yaml
+=========================================================================
+CSV DATA DOWNLOADING STARTED NOW!
+=========================================================================
+src/etl/src/jobs/csv_data/covid_py.csv: No such file or directory
+=========================================================================
+
+2022-05-18 23:08:24 +0000 - dagster - INFO - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - a - Command exited with return code 0
+2022-05-18 23:08:24 +0000 - dagster - DEBUG - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - 550 - a - STEP_OUTPUT - Yielded output "result" of type "String". (Type check passed).
+2022-05-18 23:08:25 +0000 - dagster - DEBUG - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - a - Writing file at: /usr/src/app/storage/459655eb-514b-4235-80ba-23220a3b2b4e/a/result
+2022-05-18 23:08:25 +0000 - dagster - DEBUG - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - 550 - a - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+2022-05-18 23:08:25 +0000 - dagster - DEBUG - download_csv_dataset - 459655eb-514b-4235-80ba-23220a3b2b4e - 550 - a - STEP_SUCCESS - Finished execution of step "a" in 3.05s.

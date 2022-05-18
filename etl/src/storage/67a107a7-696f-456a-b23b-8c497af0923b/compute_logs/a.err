@@ -1,0 +1,29 @@
+2022-05-18 22:47:42 +0000 - dagster - DEBUG - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - 391 - a - LOGS_CAPTURED - Started capturing logs for step: a.
+2022-05-18 22:47:42 +0000 - dagster - DEBUG - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - 391 - a - STEP_START - Started execution of step "a".
+2022-05-18 22:47:42 +0000 - dagster - INFO - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - a - Running command:
+
+
+
+
+echo "========================================================================="
+echo pwd
+echo "========================================================================="
+echo "CSV DATA DOWNLOADING STARTED NOW!"
+echo "========================================================================="
+wget --no-check-certificate -O csv_data/covid_py.csv "https://www.mspbs.gov.py/xweb/vacunados.csv"
+echo "========================================================================="
+
+2022-05-18 22:47:43 +0000 - dagster - INFO - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - a - Command pid: 448
+2022-05-18 22:47:45 +0000 - dagster - INFO - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - a - =========================================================================
+pwd
+=========================================================================
+CSV DATA DOWNLOADING STARTED NOW!
+=========================================================================
+csv_data/covid_py.csv: No such file or directory
+=========================================================================
+
+2022-05-18 22:47:46 +0000 - dagster - INFO - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - a - Command exited with return code 0
+2022-05-18 22:47:46 +0000 - dagster - DEBUG - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - 391 - a - STEP_OUTPUT - Yielded output "result" of type "String". (Type check passed).
+2022-05-18 22:47:46 +0000 - dagster - DEBUG - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - a - Writing file at: /usr/src/app/storage/67a107a7-696f-456a-b23b-8c497af0923b/a/result
+2022-05-18 22:47:46 +0000 - dagster - DEBUG - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - 391 - a - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+2022-05-18 22:47:47 +0000 - dagster - DEBUG - download_csv_dataset - 67a107a7-696f-456a-b23b-8c497af0923b - 391 - a - STEP_SUCCESS - Finished execution of step "a" in 4.53s.

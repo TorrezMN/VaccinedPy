@@ -1,0 +1,10 @@
+2022-05-18 22:29:53 +0000 - dagster - DEBUG - download_csv_dataset - cefa594d-d6ac-4585-9ce0-e76744e821d9 - 25760 - a - LOGS_CAPTURED - Started capturing logs for step: a.
+2022-05-18 22:29:54 +0000 - dagster - DEBUG - download_csv_dataset - cefa594d-d6ac-4585-9ce0-e76744e821d9 - 25760 - a - STEP_START - Started execution of step "a".
+2022-05-18 22:29:54 +0000 - dagster - INFO - download_csv_dataset - cefa594d-d6ac-4585-9ce0-e76744e821d9 - a - Running command:
+
+echo "CSV DATA DOWNLOADING STARTED NOW!"
+echo "========================================================================="
+wget --no-check-certificate -O -x csv_data/covid_py.csv "https://www.mspbs.gov.py/xweb/vacunados.csv"
+echo "========================================================================="
+
+2022-05-18 22:29:55 +0000 - dagster - INFO - download_csv_dataset - cefa594d-d6ac-4585-9ce0-e76744e821d9 - a - Command pid: 25787

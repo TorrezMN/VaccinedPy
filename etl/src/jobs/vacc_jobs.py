@@ -8,15 +8,9 @@ from dagster import (RunRequest, ScheduleDefinition, file_relative_path,
                      get_dagster_logger, graph, job, op, repository, sensor)
 from dagster_shell import create_shell_command_op, create_shell_script_op
 
-from ops.cereal_ops import (
-    display_results,
-    download_cereals,
-    find_highest_calorie_cereal,
-    find_highest_protein_cereal,
-    hello_cereal,
-)
 
 
+from ops.transform_ops import test_op
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 @job
 def download_csv_dataset():
-    a = create_shell_script_op(file_relative_path(
+    download_dataset = create_shell_script_op(file_relative_path(
         __file__, "shell_scripts/download_csv_file.sh"),
                                name="a")
 
@@ -35,9 +29,9 @@ def download_csv_dataset():
     if (file_exists):
         pass
     else:
-        a()
+        download_dataset()
 
+    test_op()
     # After downloading csv data. Process data.
-    #  read_csv_file()
 
 
