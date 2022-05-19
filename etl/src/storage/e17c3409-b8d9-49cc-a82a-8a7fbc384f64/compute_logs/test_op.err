@@ -1,7 +1,0 @@
-2022-05-18 01:41:23 +0000 - dagster - DEBUG - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - 1429 - test_op - LOGS_CAPTURED - Started capturing logs for step: test_op.
-2022-05-18 01:41:23 +0000 - dagster - DEBUG - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - 1429 - test_op - STEP_START - Started execution of step "test_op".
-2022-05-18 01:41:23 +0000 - dagster - INFO - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - test_op - ESTE ES UN TEST OP!
-2022-05-18 01:41:24 +0000 - dagster - DEBUG - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - 1429 - test_op - STEP_OUTPUT - Yielded output "result" of type "Nothing". (Type check passed).
-2022-05-18 01:41:24 +0000 - dagster - DEBUG - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - test_op - Writing file at: /usr/src/app/storage/e17c3409-b8d9-49cc-a82a-8a7fbc384f64/test_op/result
-2022-05-18 01:41:24 +0000 - dagster - DEBUG - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - 1429 - test_op - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-2022-05-18 01:41:24 +0000 - dagster - DEBUG - download_csv_dataset - e17c3409-b8d9-49cc-a82a-8a7fbc384f64 - 1429 - test_op - STEP_SUCCESS - Finished execution of step "test_op" in 356ms.
