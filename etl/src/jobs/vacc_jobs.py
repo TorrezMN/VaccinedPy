@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 def download_csv_dataset():
     download_dataset = create_shell_script_op(file_relative_path(
         __file__, "shell_scripts/download_csv_file.sh"),
-                               name="a")
+                               name="Download_CSV_Data")
 
 
     file_exists = exists(
