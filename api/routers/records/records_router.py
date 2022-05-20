@@ -183,12 +183,3 @@ def filter_by_application_date_restricted_size(date: str,
     return (API_RESPONSE)
 
 
-@record_router.get('/filter_by_establishment_id/{id}')
-def filter_by_establishment_id(establ_id: int, db=Depends(db)):
-    return ('filter by establishment id')
-
-
-@record_router.get('/filter_by_establishment_id_limit/{id}/{cant}')
-def filter_by_establishment_id_limit(establ_id: int, cant: int,
-                                     db=Depends(db)):
-    return ('filter by establishment id limit')

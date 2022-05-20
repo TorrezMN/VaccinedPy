@@ -25,19 +25,35 @@ def db():
 
 
 @vaccine_router.get('/get_all_vaccines')
-def get_all_dose(db=Depends(db)):
+def get_all_vaccines(db=Depends(db)):
+    """
+        Get all vaccines.
+        ---
+        Returns a list of all vaccines registered.
+    """
     API_RESPONSE['data'] = crud.get_all_vaccines(db)
     return (API_RESPONSE)
 
 
 @vaccine_router.post('/add_new_vaccine')
 def add_new_vaccine(vacc: Vaccine, db=Depends(db)):
+    """
+        Add new vaccine.
+        ---
+        Allows users to add new vaccines.
+    """
     API_RESPONSE['data'] = crud.save_new_vaccine(db, vacc)
     return (API_RESPONSE)
 
 
 @vaccine_router.post('/get_or_create_vaccine')
 def get_or_create_new_vaccine(vacc: Vaccine_Name, db=Depends(db)):
+    """
+        GET or CREATE new Vaccine
+        ---
+        Returns a vaccine record if exists or create a new record and return the record created.
+
+    """
     API_RESPONSE['data'] = crud.get_or_create_vaccine(db, vacc)
     return (API_RESPONSE)
 

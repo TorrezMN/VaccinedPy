@@ -7,6 +7,7 @@ from dagster import (RunRequest, ScheduleDefinition, file_relative_path,
                      get_dagster_logger, graph, job, op,Nothing, repository, sensor)
 from dagster_shell import create_shell_command_op, create_shell_script_op
 
+from time import sleep
 
 
 #  IMPORTING OPS
@@ -14,6 +15,13 @@ from ops.transform_ops import read_csv_file
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+@job
+def delete_data_set():
+    logger = get_dagster_logger()
+    for i in range(0,5):
+        sleep(3)
+        logger.info('DELETING DATASET!')
 
 
 @job
@@ -33,6 +41,8 @@ def download_csv_dataset():
     else:
         logger.info("FILE DON'T EXIST! DOWNLOADING NOW!")
         download_dataset()
+
+    delete_data_set.execute_in_process()
 
 
 
