@@ -1,21 +1,16 @@
 
-# DOCKERFILE API
+FROM node:14-alpine 
 
 
-
-FROM python:3.9
-
-WORKDIR /code
-
-COPY requirements.txt ./
-
-RUN python -m pip install --upgrade pip
-
-RUN pip install -r requirements.txt
-
-RUN apt-get update && apt-get -y install cron && apt-get -y install htop
+# Add a work directory
+WORKDIR /code/src
+# Cache and Install dependencies
+COPY package.json .
 
 
-COPY . /code/
+RUN npm install
 
-
+# Copy app files
+COPY . .
+# Start the app
+CMD [ "npm", "start" ]

@@ -41,8 +41,6 @@ services:
     working_dir: /code/src
     restart: on-failure
     
-    command: bash -c "python3 main.py"
-
     environment:
       DEBUG: 1
     volumes:
