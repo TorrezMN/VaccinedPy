@@ -6,12 +6,6 @@ ENV DAGSTER_HOME=/usr/src/app
 
 # Install dependencies
 COPY ./requirements.txt .
-
-RUN apt-get update && apt-get -y install cron && apt-get -y install htop && apt-get -y install wget
-
-RUN python -m pip install --upgrade pip
-
-
 RUN pip install -r requirements.txt
 
 # Copy source code
@@ -19,6 +13,3 @@ COPY ./dagster.yaml .
 COPY  ./src .
 
 CMD ["dagit", "-w", "workspace.yaml", "-h", "0.0.0.0", "-p", "3000"]
-
-
-
