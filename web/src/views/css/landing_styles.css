@@ -1,0 +1,31 @@
+
+@media screen and (min-width: 30em) {
+	
+	.landing_container{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+	}
+	.landing_container>p{
+		margin:.3rem;
+	}
+	.landing_title{
+		color:var(--orange);
+		font-family:var(--main-font);
+		font-size:3rem;
+	}
+	.landing_subtitle{
+		color:var(--orange);
+		font-family:var(--main-font);
+		font-size:1rem;
+	}
+	.landing_button{
+		margin-top:2rem;
+		border: 1px solid var(--orange);
+		padding:.5rem 1rem .5rem 1rem;
+		text-decoration:none;
+		cursor:pointer;
+		color:var(--orange)
+	}
+}

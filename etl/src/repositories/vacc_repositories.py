@@ -6,10 +6,10 @@ from dagster import repository
 #  JOBS
 from jobs.vacc_jobs import test_job
 #  SCHEDULES
-from schedules.vacc_schedules import every_weekday_9am 
+from schedules.vacc_schedules import every_five_minutes 
 
 
 @repository
-def hello_cereal_repository():
+def vacc_repo():
     """Vaccined repository."""
-    return [test_job, every_weekday_9am]
+    return [test_job, every_five_minutes]

@@ -1,10 +1,27 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+	cursor:crosshair;
 }
 
+
+:root {
+	/* COLORS */
+	--orange:#EF8D04;
+	--black:#27180C;
+	--dark_brown:#763B0B;
+	--light_brown:#9C5C0C;
+
+
+
+	/* FONTS */
+	--main-font: 'Inconsolata', monospace;
+}
 
 @media screen and (min-width: 30em) {
 	
@@ -15,8 +32,20 @@
 	align-items:center;
 	min-width:100%;
 	min-height:100vh;
-	background:gray;
-	position:relative;
+	background:var(--black);
 }
+
+
+
+.resaltar{
+	background: var(--orange);
+	color:var(--black);
+	padding: .2rem .4rem .2rem .4rem;
+}
+
+
+
+
+
 
 }

@@ -11,7 +11,7 @@ from jobs.vacc_jobs import test_job
     job=test_job,
     execution_timezone="Europe/Stockholm",
 )
-def every_weekday_9am(context):
-    """Example of how to setup a weekday schedule for a job."""
+def every_five_minutes(context):
+    """THIS WILL RUN EVERY FIVE MINUTES."""
     date = context.scheduled_execution_time.strftime("%Y-%m-%d")
-    return {"ops": {"test_op": {"config": {"date": date}}}}
+    return {"ops": {"download_csv": {"config": {"date": date}}}}
