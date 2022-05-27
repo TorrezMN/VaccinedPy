@@ -55,9 +55,11 @@ services:
     build: ./etl
     ports:
       - 3000:3000
+
   dagster-daemon:
     build: ./etl
     command: "dagster-daemon run"
+
   dagster-postgres:
     image: postgres:13.3
     ports:
@@ -69,3 +71,4 @@ services:
 volumes:
   dagster-postgres:
     driver: local
+

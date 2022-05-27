@@ -4,12 +4,11 @@ from dagster import repository
 
 
 #  JOBS
-from jobs.vacc_jobs import test_job
+from jobs.vacc_jobs import download_csv_dataset
 #  SCHEDULES
-from schedules.vacc_schedules import every_five_minutes 
 
 
 @repository
 def vacc_repo():
     """Vaccined repository."""
-    return [test_job, every_five_minutes]
+    return [download_csv_dataset]
