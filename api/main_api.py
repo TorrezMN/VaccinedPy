@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from db_engine import models
 import os
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
+
 
 #  STATIC/TEMPLATES IMPORTS
 from fastapi.staticfiles import StaticFiles
@@ -22,6 +24,10 @@ from routers.records import records_router
 from routers.vaccine import vaccine_router
 
 models.Base.metadata.create_all(bind=engine)
+
+
+
+
 
 #  IMPORTING METADATA
 from api_metadata import api_metadata
@@ -45,6 +51,21 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 app.mount('/static', StaticFiles(directory=STATIC_DIR), name="static")
 
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
+
+#  MIDLEWARE SETUP
+
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
 
 
 def db():

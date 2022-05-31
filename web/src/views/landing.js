@@ -1,5 +1,7 @@
+import './static/css/landing_styles.css';
 
-import './css/landing_styles.css';
+// ICONS
+import {FaSignInAlt} from "react-icons/fa";
 
 
 
@@ -9,7 +11,7 @@ function  Landing(){
 		<div className='landing_container'>
 			<p className='landing_title'>Paraguay <span className='resaltar'>COVID-19</span></p>
 			<p className='landing_subtitle'>A small application to explore vaccination data in Paraguay.</p>
-			<a href='#' className='landing_button'>Go to Dash</a>
+			<a href='/dash' className='landing_button'><FaSignInAlt/>  Go to Dash</a>
 		</div>
 	)
 }

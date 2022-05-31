@@ -2,19 +2,35 @@ import './App.css';
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  Routes,
+  Route} from "react-router-dom";
 
+
+
+// IMPORTING VIEWS
 import Landing from './views/landing.js';
+import Dash from './views/dash.js';
+import Vaccines from './views/vaccines.js';
+
+
+
+
 
 function App() {
-	document.title= 'Vaccined Py'
+
+  document.title = 'Vaccined Py - COVID 19';
+
+
   return (
+    <Router>
     <div className="App">
-	  <Landing/>
+		<Routes>
+          <Route path='/' element={<Landing/>} />
+          <Route path='/dash' element={<Dash/>} />
+          <Route path='/vaccines' element={<Vaccines/>} />
+		</Routes>
     </div>
+    </Router>
   );
 }
 

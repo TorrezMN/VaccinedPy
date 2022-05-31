@@ -31,7 +31,10 @@ def get_all_vaccines(db=Depends(db)):
         ---
         Returns a list of all vaccines registered.
     """
-    API_RESPONSE['data'] = crud.get_all_vaccines(db)
+    data = crud.get_all_vaccines(db)
+    size = len(data)
+    API_RESPONSE['size'] = size
+    API_RESPONSE['data'] = data
     return (API_RESPONSE)
 
 

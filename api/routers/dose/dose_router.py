@@ -34,7 +34,10 @@ def get_all_dose(db=Depends(db)):
 
     """
 
-    API_RESPONSE['data'] = crud.get_all_dose(db)
+    data = crud.get_all_dose(db)
+    size = len(data)
+    API_RESPONSE['size'] = size
+    API_RESPONSE['data'] = data
     return (API_RESPONSE)
 
 

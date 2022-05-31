@@ -1,0 +1,41 @@
+
+@media screen and (min-width: 30em) {
+	.vaccines_container{
+		width:70vw;
+		height:70vh;
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+		color: var(--orange);
+		font-family: var(--main-font);
+	}
+	.vaccine_title{
+		font-size:3rem;
+	}
+	.vaccine_subtitles{
+		font-size:2rem;
+	}
+	.vaccines{
+		margin-top:2rem;
+		width:100%;
+		height:100%;
+	}
+
+	.vaccine{
+		width:100%;
+		padding:5px;
+		margin: 0 0 5px 0;
+		transition:.5s;
+	}
+	.vaccine:hover{
+		margin-left:5rem;
+	}
+	.btn_go_back{
+		text-decoration:none;
+		color: var(--orange);
+		border-left:2px solid var(--orange);
+		padding:.5rem 1rem .5rem 1rem;
+		cursor:pointer;
+	}
+}

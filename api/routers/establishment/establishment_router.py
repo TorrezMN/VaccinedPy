@@ -38,7 +38,9 @@ def get_all_establishments(db=Depends(db)):
     data = crud.get_all_establishments(db)
     API_RESPONSE['size'] = len(data)
     API_RESPONSE['data'] = data
-    return (API_RESPONSE)
+
+    return(API_RESPONSE)
+
 
 
 @establishment_router.post('/save_establishment')
