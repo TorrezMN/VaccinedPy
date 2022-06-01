@@ -8,13 +8,12 @@
 		font-family: var(--main-font);
 		color: var(--orange);
 		min-width:100%;
-		min-height:100vh;
+		max-height:100vh;
 		align-items: center;
 	}
 	.dash_sm_cell{
 		background:var(--dark_brown);
 		width:100%;
-		height:100%;
 	}
 	.dash_xl_cell{
 		width:100%;
@@ -28,6 +27,7 @@
 		justify-content:center;
 		align-items:center;
 		position:relative;
+		min-height:60%;
 	}
 	.ver_mas{
 		position:absolute;
@@ -43,7 +43,6 @@
 	}
 	.cell_title{
 		width:100%;
-		height:100%;
 		display:flex;
 		flex-direction:column;
 		justify-content:center;
@@ -68,13 +67,12 @@
 	.subtitle{
 		font-size:1rem;
 	}
-	.cell_menu{
-		background:red;
-		grid-row: span 4;
-	}
 	.cell_table{
-		grid-column: span 3;
+		grid-column: span 4;
 		grid-row: span 4;
+		width:100%;
+		min-height:70vh;
+		overflow:scroll;
 	}
 
 	

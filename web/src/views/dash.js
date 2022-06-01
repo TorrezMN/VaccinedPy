@@ -56,7 +56,6 @@ function  Dash(){
 			<p className='stat_value'>{t_dose}</p>
 
 		</div>
-		<div className='dash_xl_cell cell_menu'></div>
 		<div className='dash_xl_cell cell_table'>
 			<Table/>
 		</div>

@@ -42,6 +42,15 @@ def get_all_establishments(db=Depends(db)):
     return(API_RESPONSE)
 
 
+@establishment_router.get('/get_by_id/{id}')
+def get_record_by_id(id:int, db=Depends(db)):
+    data = crud.filter_record_by_id(db, id)
+
+    if data is None:
+        API_RESPONSE['data'] = 'NO SE ENCONTRO REGISTRO'
+    else:
+        API_RESPONSE['data'] = data
+    return (API_RESPONSE)
 
 @establishment_router.post('/save_establishment')
 def save_establishment(estbl: Establishments, db=Depends(db)):

@@ -27,6 +27,9 @@ def filter_record_by_name(db: Session, name: str):
     return db.query(
         models.Person_Record).filter(models.Person_Record.nombre == n).first()
 
+def filter_record_by_id(db: Session, id: str):
+    return db.query(
+        models.Person_Record).filter(models.Person_Record.id == id).first()
 
 def filter_record_by_name_all(db: Session, name: str):
     n = str(name).upper()
