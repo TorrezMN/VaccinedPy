@@ -22,6 +22,7 @@ from routers.dose import dose_router
 from routers.establishment import establishment_router
 from routers.records import records_router
 from routers.vaccine import vaccine_router
+from routers.miscellaneous import miscellaneous_router
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -42,6 +43,7 @@ app.include_router(dose_router.dose_router)
 app.include_router(establishment_router.establishment_router)
 app.include_router(vaccine_router.vaccine_router)
 app.include_router(records_router.record_router)
+app.include_router(miscellaneous_router.miss_router)
 
 #  STATIC & TEMPLATES
 BASE_DIR = Path(__file__).resolve().parent

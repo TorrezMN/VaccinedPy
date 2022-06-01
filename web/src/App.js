@@ -12,6 +12,7 @@ import Landing from './views/landing.js';
 import Dash from './views/dash.js';
 import Vaccines from './views/vaccines.js';
 import Card from './views/card.js';
+import Establishments from './views/establishments.js';
 
 
 
@@ -29,6 +30,7 @@ function App() {
 			<Route path='/' element={<Landing/>} />
 			<Route path='/dash' element={<Dash/>} />
 			<Route path='/vaccines' element={<Vaccines/>} />
+			<Route path='/establishments' element={<Establishments/>} />
 			<Route path="card/:id" element={<Card/>} />
 		</Routes>
     </div>

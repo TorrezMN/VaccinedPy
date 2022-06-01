@@ -20,6 +20,7 @@
 		margin-top:10px;
 	}
 	.input_search{
+		cursor:pointer;
 		margin: 0 20px 0 20px;
 		background:var(--black);
 		border:1px solid var(--dark_brown);

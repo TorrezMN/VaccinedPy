@@ -40,11 +40,12 @@ function  Dash(){
 	<div className='dash_container'>
 		<div className='cell_title'>
 			<a href='/' className='title'>COVID - Py</a>
-			<p className='subtitle'>Dashboard</p>
+			<p className='subtitle'>Explorer</p>
 		</div>
 		<div className='dash_sm_cell cell_stats'>
 			<p className='stats_title'>Total Stablishments</p>
 			<p className='stat_value'>{t_stabl}</p>
+			<a href='/establishments' className='ver_mas'><FaShare/></a>
 		</div>
 		<div className='dash_sm_cell cell_stats'>
 			<p className='stats_title'>Total Vaccines</p>

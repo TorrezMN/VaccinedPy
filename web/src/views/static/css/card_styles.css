@@ -1,0 +1,84 @@
+
+
+
+@media screen and (min-width: 30em) {
+
+	h1{
+		border-bottom: 1px solid var(--orange);
+		color:var(--orange);
+		margin-bottom: 2rem;
+		width:110%;
+	}
+
+	button{
+		padding:1rem;
+		font-size:1.5rem;
+		cursor:pointer;
+		background:transparent;
+		color:var(--orange);
+
+	}
+
+	.card_container{
+		width:100%;
+		height:100vh;
+
+		font-family:var(--main-font);
+
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+	}
+	.vacc_card{
+		margin-top:3rem;
+		width:60vw;
+		height:40vh;
+		display:grid;
+		grid-template-columns: repeat(4 , 1fr);
+		grid-template-rows: repeat(4 , 1fr);
+		grid-gap:3px;
+		color:var(--orange);
+	}
+	.vacc_card>p{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+		border:2px solid var(--orange);
+		padding: 3px;
+	}
+	.vacc_card>p:nth-child(1){
+		grid-row: span 2;
+		text-align:center;
+	}
+	.vacc_card>p:nth-child(2){
+		grid-row: span 1;
+		grid-column: span 3;
+	}
+	.vacc_card>p:nth-child(3){
+		grid-row: span 1;
+		grid-column: span 3;
+	}
+
+	.vacc_card>p:nth-child(4){
+		grid-row: span 1;
+		grid-column: span 4;
+	}
+	.vacc_card>p:nth-child(5){
+		grid-row: span 1;
+		grid-column: span 4;
+	}
+	.vacc_card>p:nth-child(6){
+		grid-row: span 1;
+		grid-column: span 4;
+	}
+	.vacc_card>p:nth-child(7){
+		grid-row: span 1;
+		grid-column: span 2;
+	}
+	.vacc_card>p:nth-child(8){
+		grid-row: span 1;
+		grid-column: span 2;
+	}
+}

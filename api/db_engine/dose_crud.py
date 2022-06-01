@@ -15,6 +15,9 @@ def save_dose(db: Session, info: Dose):
     db.refresh(dose)
     return (dose)
 
+def filter_record_by_id(db: Session, id: int):
+    return db.query(
+        models.Dose).filter(models.Dose.id == id).first()
 
 def get_all_dose(db: Session):
     return db.query(models.Dose).all()

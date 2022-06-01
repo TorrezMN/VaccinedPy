@@ -38,6 +38,17 @@ def get_all_vaccines(db=Depends(db)):
     return (API_RESPONSE)
 
 
+@vaccine_router.get('/get_by_id/{id}')
+def get_record_by_id(id:int, db=Depends(db)):
+    data = crud.filter_record_by_id(db, id)
+
+    if data is None:
+        API_RESPONSE['data'] = 'NO SE ENCONTRO REGISTRO'
+    else:
+        API_RESPONSE['data'] = data
+    return (API_RESPONSE)
+
+
 @vaccine_router.post('/add_new_vaccine')
 def add_new_vaccine(vacc: Vaccine, db=Depends(db)):
     """

@@ -19,6 +19,10 @@ def get_all_vaccines(db: Session):
     return db.query(models.Vaccine).all()
 
 
+def filter_record_by_id(db: Session, id: str):
+    return db.query(
+        models.Vaccine).filter(models.Vaccine.id == id).first()
+
 def get_or_create_vaccine(db: Session, vacc: Vaccine_Name):
     instance = db.query(models.Vaccine).filter_by(**vacc.dict()).first()
     if instance:

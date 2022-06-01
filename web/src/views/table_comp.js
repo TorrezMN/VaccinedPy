@@ -1,6 +1,6 @@
 import './static/css/table_styles.css';
-import React, { useState, useEffect } from 'react';
-
+import { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 
@@ -8,7 +8,35 @@ function Table(props){
 	const [data, setData] = useState([]);
 	let navigate = useNavigate();
 
+	const ci_changed = (v)=>{
+		const filter_by_ci_url = `http://localhost:8000/record/filter_if_contains_ci/${v}`;
 
+		function fetchApi(){
+			axios.get(filter_by_ci_url)
+			.then((response) => {
+				setData(response.data.data);
+			});
+		}
+
+		if(v.length>0){
+			fetchApi();
+		}
+	}
+
+	const last_name_changed = (v)=>{
+		const filter_by_last_name_url = `http://localhost:8000/record/filter_by_last_name_all/${v}`;
+		function fetchApi(){
+			axios.get(filter_by_last_name_url)
+			.then((response) => {
+				setData(response.data.data);
+			});
+		}
+
+		if(v.length>0){
+			fetchApi();
+		}
+
+	}
 
 	const name_changed = (v)=>{
 		const filter_by_name_url = `http://localhost:8000/record/filter_by_name_all/${v}`;
@@ -33,8 +61,18 @@ function Table(props){
 					placeholder='Name'
 					onChange={e => name_changed(e.target.value)}
 				/>
-				<input className='input_search' type='text' placeholder='Last Name'/>
-				<input className='input_search' type='text' placeholder='CI'/>
+				<input 
+					className='input_search'
+					type='text' 
+					placeholder='Last Name'
+					onChange={e => last_name_changed(e.target.value)}
+				/>
+				<input 
+					className='input_search' 
+					type='text' 
+					placeholder='CI'
+					onChange={e => ci_changed(e.target.value)}
+				/>
 
 			</div>
 

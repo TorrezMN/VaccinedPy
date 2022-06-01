@@ -15,7 +15,7 @@ def save_establishment(db: Session, info: Establishments):
     db.refresh(est)
     return (est)
 
-def filter_record_by_id(db: Session, id: str):
+def filter_record_by_id(db: Session, id: int):
     return db.query(
         models.Establishments).filter(models.Establishments.id == id).first()
 
