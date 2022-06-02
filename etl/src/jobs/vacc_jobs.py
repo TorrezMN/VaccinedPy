@@ -10,6 +10,7 @@ from dagster import ( file_relative_path,get_dagster_logger, job)
 from ops.vacc_ops import download_csv,read_csv_file
     
 
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,16 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 def download_csv_dataset():
     """Downaloads a new copy of the dataset if not exists."""
     logger = get_dagster_logger()
-    #  file_exists = exists(os.path.join(BASE_DIR, 'csv_data', 'covid_py.csv'))
+
+    c = config('LOAD_CHUNKS', cast=int)
 
     download_csv()
 
-
-
-    #  if (file_exists):
-        #  logger.info('READING CSV FILE!')
-        #  read_csv_file()
-    #  else:
-        #  logger.info('FILE NOT FOUND! - DOWNLOADING NEW COPY')
-        #  download_csv()
 

@@ -1,5 +1,6 @@
 import './static/css/dash_styles.css';
 
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 
@@ -18,20 +19,34 @@ function  Dash(){
 	const all_vacc_url = "http://localhost:8000/vaccine/get_all_vaccines";
 	const all_dose_url = "http://localhost:8000/dose/get_all_dose";
 
-	useEffect(()=>{
-		// FETCH TOTAL STABLISHMENTS
-		fetch(all_establ_url)
-		.then(response => response.json())
-		.then(data => setTotalStbl(data.size))
-		// FETCH TOTAL VACCINES
-		fetch(all_vacc_url)
-		.then(response => response.json())
-		.then(data => setTotalVacc(data.size))
-		// FETCH ALL DOSES
-		fetch(all_dose_url)
-		.then(response => response.json())
-		.then(data => setTotalDose(data.size))
 
+	const fetchTotalEstablishments = ()=>{
+		// FETCH TOTAL STABLISHMENTS
+			axios.get(all_establ_url)
+			.then((est_resp) => {
+				setTotalStbl(est_resp.data.size);
+			});
+	}
+
+	const fetchTotalVaccines = ()=>{
+		// FETCH TOTAL VACCINES
+		axios.get(all_vacc_url)
+		.then((vacc_resp)=>{
+			setTotalVacc(vacc_resp.data.size);
+		});
+	}
+	const fetchTotalDose = ()=>{
+		// FETCH ALL DOSES
+		axios.get(all_dose_url)
+		.then((dose_resp)=>{
+			setTotalDose(dose_resp.data.size);
+		});
+	}
+
+	useEffect(()=>{
+		fetchTotalEstablishments();
+		fetchTotalVaccines();
+		fetchTotalDose();
 	}, []);
 
 

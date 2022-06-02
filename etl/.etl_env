@@ -1,0 +1,2 @@
+LOAD_CHUNKS=2
+BASE_URL="https://www.mspbs.gov.py/xweb/vacunados.csv"

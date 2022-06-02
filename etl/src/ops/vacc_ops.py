@@ -12,6 +12,8 @@ import pandas as pd
 from datetime import datetime
 from time import sleep
 
+from decouple import config
+
 #  DAGSTER
 from dagster import (get_dagster_logger, op)
 
@@ -32,21 +34,17 @@ from schemas.vaccine_schemas import Vaccine_Name
 @op
 def download_csv():
     logger = get_dagster_logger()
-    print('=============================')
-    print('DOWNLOADING CSV')
-    print('=============================')
-    BASE_URL = "https://www.mspbs.gov.py/xweb/vacunados.csv"
+    logger.info("DOWNLOADING CSV FILE!")
     ssl._create_default_https_context = ssl._create_unverified_context
     #  DOWNLOADING FILE
-    wget.download(BASE_URL, out='csv_data/covid_py.csv')
-
-
+    wget.download(config('BASE_URL', cast=str), out='csv_data/covid_py.csv')
     read_csv_file()
         
 
 @op
 def incert_update_record(chunk):
     logger = get_dagster_logger()
+    logger.info('INCERTING A NEW RECORD!')
     format_string = "%Y-%m-%d %H:%M:%S"
     db = SessionLocal()
     for index, row in chunk.iterrows():
@@ -73,7 +71,7 @@ def incert_update_record(chunk):
             )
             update_record(db, row['cedula'], r)
 
-            logger.warn('A RECORD WAS UPDATED!')
+            logger.info('A RECORD WAS UPDATED!')
 
         else:
             r = Record(
@@ -103,19 +101,62 @@ def incert_update_record(chunk):
 
 @op
 def read_csv_file():
-    print('=============================')
-    print('READING CSV FILE!')
-    print('=============================')
     logger = get_dagster_logger()
+    logger.info('READING CSV FILE!')
     csv_file_dir = 'csv_data/covid_py.csv'
     df = pd.read_csv(csv_file_dir, delimiter=';', chunksize=500)
+    limit = config('LOAD_CHUNKS', cast=int)
     c = 0
-    for k, chunk in enumerate(df):
-        if(c<1):
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f'DOWNLOADING config set to: {c}')
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    logger.info(f"ES INSTANCIA {isinstance(c, int)}")
+    if(isinstance(c, int)):
+        logger.info('LOAD_CHUNKS was found in config.')
+        for k, chunk in enumerate(df):
+            if(c<limit):
+                #  LOAD RECORD
+                logger.info(f'LOADING CHUNK - {k}!')
+                incert_update_record(chunk)
+                c+=1
+            else:
+                break
+        remove_csv_file()
+    else:
+        logger.info('LOAD_CHUNKS was not found in config.')
+        for k, chunk in enumerate(df):
             #  LOAD RECORD
             logger.info(f'LOADING CHUNK - {k}!')
             incert_update_record(chunk)
-            c+=1
-        else:
-            break
-        
+
+        remove_csv_file()
+
+@op
+def remove_csv_file():
+    logger = get_dagster_logger()
+    csv_file_dir = 'csv_data/covid_py.csv'
+    logger.info('REMOVING CSV FILE!')
+    try:
+        os.remove(csv_file_dir)
+        logger.info('FILE WAS REMOVED SUCCESFULY!')
+    except:
+        logger.info('IT WAS NOT POSIBLE TO DELETE THE CSV FILE!')
+
+
+
+
