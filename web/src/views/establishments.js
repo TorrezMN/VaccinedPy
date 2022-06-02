@@ -1,7 +1,7 @@
 import './static/css/establishments_styles.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import {useParams,  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Establishments(){
 
