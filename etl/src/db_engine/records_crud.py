@@ -18,6 +18,25 @@ def save_new_record(db: Session, rec: Record):
     return (rec)
 
 
+def update_record(db: Session, ci: str, rec: Record):
+    n = str(ci)
+    r = db.query(
+        models.Person_Record).filter(models.Person_Record.cedula == n).first()
+
+    r.nombre = rec.nombre
+    r.apellido = rec.apellido
+    r.fecha_aplicacion = rec.fecha_aplicacion
+    r.cedula = rec.cedula
+    r.establishment = rec.establishment
+    r.dose = rec.dose
+    r.vaccine = rec.vaccine
+    r.actualizado_al = rec.actualizado_al
+
+    db.add(r)
+    db.commit()
+    db.refresh(r)
+    return (r)
+
 def get_all_records(db: Session):
     return db.query(models.Person_Record).all()
 

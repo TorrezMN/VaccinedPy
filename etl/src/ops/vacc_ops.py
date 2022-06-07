@@ -22,7 +22,7 @@ from db_engine.database import SessionLocal
 #  IMPORT CRUD OPERATIONS
 from db_engine.dose_crud import get_all_dose, get_or_create_new_dose
 from db_engine.establishments_crud import get_or_create_establishment
-from db_engine.records_crud import (filter_record_by_ci, save_new_record)
+from db_engine.records_crud import (update_record, filter_record_by_ci, save_new_record)
 from db_engine.vaccine_crud import get_or_create_vaccine
 #  SCHEMAS
 from schemas.dose_schemas import Dose_Name
