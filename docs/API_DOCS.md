@@ -1,5 +1,12 @@
 ## API
-  - Here you will find a description of the endpoints available in the api.
+Here you will find a description of the endpoints available in the api.
+Or you can run the project and go to:
+
+```
+http://0.0.0.0:8000/docs
+```
+
+
 
 ### dose
   - Endpoints related to the doses of the covid vaccines.
