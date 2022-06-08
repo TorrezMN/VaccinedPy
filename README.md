@@ -58,6 +58,20 @@ sudo docker-compose up
 ***NOTE*** 
 Once the images are created you must stop the containers and restart them.
 
+By default, the ETL process will load ***2 groups of 500 records*** each in the application. 
+It can be configured in the 
+```.etl_env ``` 
+file by changing the ```LOAD_CHUNKS``` attribute in the file. 
+Or it can be skipped by removing the configuration in the file and all records will be loaded.
+
+The file can be found at:
+
+```
+etl/.etl_env
+
+```
+
+
 
 ***Only the first time.***
 By default the configuration will trigger the ETL task every hour. 
@@ -99,7 +113,7 @@ http://0.0.0.0:5000/
 ```
 
 
-
+---
 ***EXTRA URL***
 
 ETL Manager
@@ -110,4 +124,5 @@ http://0.0.0.0:3000
 ```
 
 
+---
 ***enjoy***
