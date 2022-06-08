@@ -60,8 +60,12 @@ Once the images are created you must stop the containers and restart them.
 
 
 ***Only the first time.***
-By default the configuration will trigger the ETL task every hour. If you are in a hurry you can follow these instructions:
-You must enter the Dagster task manager and fire the initial data load task. For this go to:
+By default the configuration will trigger the ETL task every hour. 
+If you are in a hurry you can follow these instructions:
+
+You must enter the Dagster task manager and fire the initial data load task. 
+
+For this go to:
 
 ```
 http://0.0.0.0:3000
