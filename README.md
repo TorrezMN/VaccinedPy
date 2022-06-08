@@ -82,11 +82,10 @@ Once the loading process is finished you will see the following screen:
 ![dagster_home](https://github.com/TorrezMN/VaccinedPy/blob/main/docs/foto3.png)
 
 
-After this step, you have 3 options.
+After this step, you have 2 options.
 
   - [API Home](http://0.0.0.0:8000)
   - [Web Dashboard](http://0.0.0.0:5000/)
-  - [Dagger Manager](http://0.0.0.0:3000)
 
 
 API Home
@@ -98,6 +97,10 @@ Web APP
 ```
 http://0.0.0.0:5000/
 ```
+
+
+
+***EXTRA URL***
 
 ETL Manager
 
