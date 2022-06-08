@@ -50,8 +50,7 @@ cd web/
 
 npm install
 ```
-
-then run the project with docker-compose:
+go back to the root directory and then run the project with docker-compose:
 
 ```
 sudo docker-compose up
