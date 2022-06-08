@@ -75,6 +75,8 @@ The task graph view appears. At the bottom right you will see a button that says
 ![dagster_home](https://github.com/TorrezMN/VaccinedPy/blob/main/docs/foto2.png)
 
 
+Once the loading process is finished you will see the following screen:
+![dagster_home](https://github.com/TorrezMN/VaccinedPy/blob/main/docs/foto3.png)
 
 
 After this step, you have 3 options.

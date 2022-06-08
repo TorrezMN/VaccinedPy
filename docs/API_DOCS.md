@@ -8,6 +8,11 @@ http://0.0.0.0:8000/docs
 
 
 
+
+
+
+
+
 ### dose
   - Endpoints related to the doses of the covid vaccines.
 
